@@ -1,0 +1,95 @@
+Step 1: Choose Your Region
+
+Log in to the AWS Management Console and select the region that aligns with your preferences. In our example, we’ll be utilizing the us-east-1 (N. Virginia) region for this project.
+
+
+Step 2: Create a Security Group
+
+To ensure secure access to your website, create a security group that opens ports 22 (SSH) and 80 (HTTP). This will allow you to manage your EC2 instance via SSH and enables users to access your website over the internet.
+
+Navigate to the AWS Management Console and search for “VPC.”
+Select “VPC” under services in the search results.
+Scroll down to “Security Groups” in the VPC navigation pane.
+Click “Create Security Group.”
+Provide a name and description for the security group.
+Select the appropriate VPC if you have multiple.
+Under Inbound rules, add a rule for HTTP (port 80) with the source set to “anywhere IPv4.”
+Add a rule for SSH (port 22) with the source set to “My IP” for added security.
+Create the security group.
+
+
+
+
+
+Step 3: Launch an EC2 Instance
+
+Search for “EC2” in the AWS Management Console and select it.
+Click “Launch Instance.”
+Give your EC2 instance a name.
+Choose Amazon Linux 2 as the Amazon Machine Image.
+Select t2.micro as the instance type.
+Create a new key pair and choose the .pem format.
+Select your key pair and the security group you created.
+Launch the instance and wait for it to pass the status check.
+
+
+
+
+
+
+
+Step 4: SSH into the Instance
+
+Copy the public IPv4 address of the EC2 instance from the details section.
+Use an SSH client to connect to the instance by pasting the SSH command in your terminal or GitBash, replacing “web-key.pem” with the correct path and the IPv4 address.
+Type “yes” to continue when prompted.
+
+
+
+
+Step 5: Install Required Software
+
+Once logged into the instance, become the root user using the command “sudo -i.”
+Update the instance with “yum update -y.”
+Install the Apache service with “yum install httpd -y.”
+Change to the HTML directory with “cd /var/www/html.”
+Download your desired HTML template using “wget <download link>.”
+Unzip the downloaded folder with “unzip <folder name>.”
+sudo -i
+yum update -y
+yum install httpd -y
+cd /var/www/html
+wget https://www.toolplate.com/zip-templates/2135_mini_finance.zip
+unzip 2135_mini_finance.zip
+
+
+
+
+Step 6: Move Files to the HTML Directory
+
+Copy the unzipped web files to the HTML directory with “cp -r <folder name>/* /var/www/html.”
+Verify the copied files using the “ls” command.
+Delete the zipped and unzipped folders with “rm -rf <folder name> <folder name>.zip.”
+cp -r 2135_mini_finance/* /var/www/html
+ls
+rm -rf 2135_mini_finance 2135_mini_finance.zip
+
+
+
+Step 7: Enable and Start the Apache Service
+
+Enable the Apache service with “systemctl enable httpd.”
+Start the service with “systemctl start httpd.”
+systemctl enable httpd
+systemctl start httpd
+Final Step: Access Your Static Website
+
+Copy the public IPv4 address of the instance.
+Paste the address in your browser’s new tab.
+Your static website is now live and accessible!
+
+
+
+
+Congratulations! You’ve successfully hosted a static website on an AWS EC2 instance. Remember to clean up by terminating the instance, deleting the key pair, and removing the security group if necessary. This project serves as an insightful exercise in deploying and managing a static website using cloud computing resources.
+
