@@ -63,4 +63,12 @@ go up to Bucket ARN and copy the text we will input it between “ /*”
 
 ## step2:
 
-![image](https://github.com/user-attachments/assets/687c7e61-f001-4031-9575-08354802235d)
+# Use CloudFront along with the S3
+![image](https://github.com/user-attachments/assets/a59be0df-ab4e-4fc4-8ea0-94e3d55f7ee6)
+
+# Search the AWS console for CloudFront
+once in CloudFront, we are going to create distribution
+we’re going to paste the website link in the name portion
+
+![image](https://github.com/user-attachments/assets/b903200b-6523-433f-baa6-fa85d214c528)
+
