@@ -59,6 +59,8 @@ go up to Bucket ARN and copy the text we will input it between “ /*”
 # At this point you will also want the index document section to have the file we up index.html in the box and changes saved
 ![image](https://github.com/user-attachments/assets/327758f1-18aa-4112-ae67-0263a72ddb4d)
 
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
 
 
 ## step2:
@@ -71,4 +73,24 @@ once in CloudFront, we are going to create distribution
 we’re going to paste the website link in the name portion
 
 ![image](https://github.com/user-attachments/assets/b903200b-6523-433f-baa6-fa85d214c528)
+
+# scroll down until you see the option, default cache behavior
+viewer protocol policy, select redirect HTTP to HTTPS
+
+![image](https://github.com/user-attachments/assets/57b94a21-c6a6-4628-ad71-3623e41ad532)
+
+leave everything else default, you will have to select Web Application Firewall, hit enable security protections and create
+
+![image](https://github.com/user-attachments/assets/4cb1e97e-3e8c-4475-9c45-32cd25b3c917)
+
+
+# Now your distribution should be created, we will test the link out
+click your distribution, in general click the distribution domain name
+
+Now your distribution should be created, we will test the link out
+
+click your distribution, in general click the distribution domain name
+
+
+
 
