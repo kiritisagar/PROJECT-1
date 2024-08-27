@@ -14,7 +14,7 @@
 ![image](https://github.com/user-attachments/assets/554938be-d729-477e-bf1e-137f12995ee3)
 
 # step2:
-# A.. Create a Public Subnet in your Custom VPC
+# Create a Public Subnet in your Custom VPC
 Enter the subnet details:
 Name tag: PublicSubnet1.
 VPC: Select the VPC you created.
@@ -31,7 +31,7 @@ IPv4 CIDR block: Enter 10.0.2.0/24.
 ![image](https://github.com/user-attachments/assets/c461c26d-ea92-4e46-9b00-5f9c8bd1f133)
 
 # STEP3:
-Create an Internet Gateway
+# Create an Internet Gateway
 Navigate to Internet Gateways under the VPC section.
 Click Create internet gateway.
 Enter a name tag: (e.g., MyInternetGateway).
@@ -54,10 +54,15 @@ Name tag: PublicRouteTable.
 VPC: Select the VPC you created.
 Click Create route table
 
+![image](https://github.com/user-attachments/assets/bbcfc989-799c-40ea-91a7-b08aa2b95c34)
+
 # step6: Associate the  route tables with the subnets:
 # a.Select the public route table.
 Click Subnet Associations tab and then Edit subnet associations.
 Select the public subnets and click Save associations.
+
+##  Make Auto-assign IP enable because as name suggests it is a Public subnet.
+![image](https://github.com/user-attachments/assets/a431f026-89b3-4719-bf65-123a23f71372)
 
 # step7: edit routes
 Select the Route Table:
@@ -71,7 +76,11 @@ Click Edit routes.
 Add or Modify Routes
 Destination: Enter 0.0.0.0/0 for all IPv4 traffic (or ::/0 for all IPv6 traffic).
 Target: Select Internet Gateway and choose the appropriate Internet Gateway (e.g., igw-12345678).
+![image](https://github.com/user-attachments/assets/567e2feb-8600-49a5-ad4b-711c623af1f5)
 
 
 # step 8:
 go to ec2 dashboard and select vpc and sub net custum and create static website
+
+![image](https://github.com/user-attachments/assets/49baa9dc-4afa-4dc3-87a6-4fb84f418811)
+
