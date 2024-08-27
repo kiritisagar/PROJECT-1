@@ -61,7 +61,6 @@ Click Create route table
 ![image](https://github.com/user-attachments/assets/bbcfc989-799c-40ea-91a7-b08aa2b95c34)
 
 # step6: Associate the  route tables with the subnets:
-# a.Select the public route table.
 Click Subnet Associations tab and then Edit subnet associations.
 Select the public subnets and click Save associations.
 
