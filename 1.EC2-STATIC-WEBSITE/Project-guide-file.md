@@ -38,7 +38,7 @@ Under Inbound rules, add a rule for HTTP (port 80) with the source set to “any
 
 # step5:
 Access Your default page
-
+copy and paste public ip on broser
 
 ![image](https://github.com/user-attachments/assets/b56f2ef3-da43-4aa0-8958-15ef1b7cba6f)
 
