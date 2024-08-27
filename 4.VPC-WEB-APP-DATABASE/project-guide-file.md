@@ -2,12 +2,12 @@
 
 
 # SET-1: VPC and components setup
-one VPC.
-Two (2) public subnets spread across two availability zones (Web Tier).
-Two (2) private subnets spread across two availability zones (Application Tier).
-Two (2) private subnets spread across two availability zones (Database Tier).
-One (1) public route table that connects the public subnets to an internet gateway.
-One (1) private route table that will connect the Application Tier private subnets and a NAT gateway.
+# one VPC.
+# Two (2) public subnets spread across two availability zones (Web Tier).
+# Two (2) private subnets spread across two availability zones (Application Tier).
+# Two (2) private subnets spread across two availability zones (Database Tier).
+# One (1) public route table that connects the public subnets to an internet gateway.
+# One (1) private route table that will connect the Application Tier private subnets and a NAT gateway.
 
 ![image](https://github.com/user-attachments/assets/c7536f26-d253-4b64-aff4-aa1141993694)
 
