@@ -26,8 +26,8 @@ sudo apt-get install apache2 -y
 ![Screenshot (198)](https://github.com/user-attachments/assets/d765b165-90a4-4db1-a5a8-1fcad8170a2b)
 
 # if require 
-         -systemctl enable apache2
-         -systemctl start apache2
+         systemctl enable apache2
+         systemctl start apache2
 
 
 # step4:
@@ -38,6 +38,8 @@ Under Inbound rules, add a rule for HTTP (port 80) with the source set to “any
 
 # step5:
 Access Your default page
+
+
 ![image](https://github.com/user-attachments/assets/b56f2ef3-da43-4aa0-8958-15ef1b7cba6f)
 
 
