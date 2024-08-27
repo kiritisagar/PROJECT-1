@@ -289,6 +289,121 @@ If you haven't yet, SSH into the app server through our bastion host.
 
 We should already have mySQL installed on the server, so we can run this command:
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+To deploy the [To-Do List Application](https://github.com/Kritika30032002/To-Do-List-Application.git) on a 3-tier architecture using your EC2 instances, follow these steps:
+
+### 1. **Clone the Repository**
+   - **Login to your EC2 instances** where you'll be deploying each tier.
+   - On the EC2 instance that will host the application backend (e.g., the Node.js server), clone the repository:
+     ```bash
+     git clone https://github.com/Kritika30032002/To-Do-List-Application.git
+     cd To-Do-List-Application
+     ```
+
+### 2. **Set Up the Backend (Application Layer)**
+   - **Install Node.js** on the backend EC2 instance:
+     ```bash
+     sudo apt update
+     sudo apt install -y nodejs npm
+     ```
+   - **Install Dependencies**:
+     ```bash
+     npm install
+     ```
+   - **Update Configuration**:
+     - If necessary, update any configuration files to point to the correct database location or any other environment-specific settings.
+
+### 3. **Set Up the Database (Database Layer)**
+   - **Login to your Database EC2 instance**.
+   - **Install MySQL** (or the database of your choice):
+     ```bash
+     sudo apt update
+     sudo apt install -y mysql-server
+     ```
+   - **Secure the Installation**:
+     ```bash
+     sudo mysql_secure_installation
+     ```
+   - **Create the Database and User**:
+     ```bash
+     mysql -u root -p
+     CREATE DATABASE tododb;
+     CREATE USER 'todouser'@'%' IDENTIFIED BY 'your_password';
+     GRANT ALL PRIVILEGES ON tododb.* TO 'todouser'@'%';
+     FLUSH PRIVILEGES;
+     EXIT;
+     ```
+   - **Update the Database Configuration** in the application:
+     - Modify the `dbConfig.js` or equivalent configuration file to reflect the new database's hostname, username, and password.
+
+### 4. **Set Up the Frontend (Presentation Layer)**
+   - **Login to your Frontend EC2 instance**.
+   - **Install a web server** (e.g., Nginx):
+     ```bash
+     sudo apt update
+     sudo apt install -y nginx
+     ```
+   - **Configure Nginx**:
+     - Modify the Nginx configuration to serve the frontend files.
+     - Point the web server to the frontend files within the repository.
+
+### 5. **Connect the Application to the Database**
+   - **Edit the Backend Application Configuration**:
+     - Ensure that the backend application is pointing to the database EC2 instance's IP address and using the correct credentials.
+
+### 6. **Start the Application**
+   - On the **Backend EC2 instance**, start the Node.js application:
+     ```bash
+     npm start
+     ```
+   - Ensure that the application can connect to the database.
+
+### 7. **Test the Setup**
+   - Access the frontend EC2 instance's public IP or domain to see if the application loads properly.
+   - Perform basic CRUD operations to verify that the frontend interacts with the backend and that the backend communicates with the database.
+
+### 8. **Set Up Security Groups and Firewalls**
+   - **Security Groups**:
+     - Open ports on the EC2 instances to allow traffic between the tiers.
+     - For example, open port 80/443 for the frontend, port 3000 (or the application port) for the backend, and port 3306 for MySQL.
+   - **Firewall**:
+     - Ensure that the security groups are correctly configured to allow only necessary traffic.
+
+### 9. **Set Up Auto Scaling and Load Balancing (Optional)**
+   - For production environments, consider setting up auto-scaling groups and load balancers for redundancy and better performance.
+
+### 10. **Monitoring and Logging**
+   - Implement monitoring tools like CloudWatch or Prometheus to monitor the performance of your application.
+   - Set up logging to capture errors and performance metrics.
+
+### 11. **Backup and Maintenance**
+   - Set up regular backups for the database and create a maintenance plan for the application and instances.
+
+This setup ensures a proper 3-tier deployment with separation between the frontend, backend, and database, enhancing security, scalability, and manageability.
+
 mysql -h YOUR_DB_ENDPOINT -P 3306 -u YOUR_DB_USERNAME -p
 When prompted, enter the password you chose when creating the DB.
 
