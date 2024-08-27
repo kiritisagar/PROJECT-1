@@ -27,8 +27,7 @@
 
 # public-rtb to serve as the main table, so select the public-rtb from the ‘Route tables’ dashboard and set it as the main table under the ‘Actions’ dropdown menu.
 
-![image](https://github.com/user-attachments/assets/01c7bc63-74af-4f0d-a8c5-d754b8cc2d09)
-![image](https://github.com/user-attachments/assets/d1e7f49f-1c37-47bf-9a56-4e7d3a56f3e5)
+![image](https://github.com/user-attachments/assets/39ca48d6-64e9-42ea-8962-996321b82bfe)
 
 
 ## Navigate to ‘NAT Gateways’ and create a new gateway called public-NAT-1. Select one of the public subnets, allocate an elastic IP, and create the gateway.
