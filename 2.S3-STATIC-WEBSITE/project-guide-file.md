@@ -24,7 +24,7 @@ Leave everything else default, You can now create your bucket
 
 Modify the bucket permissions to allow public read access to your files. This is usually done by setting a bucket policy.
 
-Example bucket policy:
+# Example bucket policy:
 {
   "Version": "2012-10-17",
   "Statement": [
