@@ -29,7 +29,7 @@ IPv4 CIDR block: Enter 10.0.1.0/24. Click Create subnet.
 
 ![image](https://github.com/user-attachments/assets/405d93de-f939-4e70-aef5-d6839c69c574)
 
-# B..Repeat the above steps to create a public subnet:
+# B..Repeat the above steps to create a public subnet2:
 Name tag: PublicSubnet2
 Availability Zone: Choose a different availability zone (e.g., us-east-1b).
 IPv4 CIDR block: Enter 10.0.2.0/24.
@@ -87,6 +87,10 @@ Click Create route table
 # step6: Associate the  route tables with the subnets:
 Click Subnet Associations tab and then Edit subnet associations.
 Select the public subnets and click Save associations.
+
+![image](https://github.com/user-attachments/assets/2139e925-7e44-4c04-9eca-c3926d296269)
+![image](https://github.com/user-attachments/assets/b40e81fa-50bd-439d-8592-af75decfb230)
+
 
 ##  Make Auto-assign IP enable because as name suggests it is a Public subnet.
 ![image](https://github.com/user-attachments/assets/a431f026-89b3-4719-bf65-123a23f71372)
