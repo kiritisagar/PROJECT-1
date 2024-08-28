@@ -84,7 +84,7 @@ Name tag: PublicRouteTable.
 VPC: Select the VPC you created.
 Click Create route table
 
-# B.Public Route Table
+# B.Private Route Table
 Click Create route table.
 Enter the route table details:
 Name tag: PrivateRouteTable.
