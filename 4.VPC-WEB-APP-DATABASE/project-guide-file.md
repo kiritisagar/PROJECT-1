@@ -103,27 +103,20 @@ Select the public subnets and click Save associations.
 
 # after Associate the  route tables with the subnets check the dashbord of route tables
 
-![Screenshot (202)](https://github.com/user-attachments/assets/58dc3a42-8dc5-4ad9-8e25-938f528e2ae0)
+![Screenshot (204)](https://github.com/user-attachments/assets/7b441cf5-6d82-4bbb-9d2a-cfedefe8efd7)
 
 
 ##  Make Auto-assign IP enable because as name suggests it is a Public subnet.
 ![image](https://github.com/user-attachments/assets/a431f026-89b3-4719-bf65-123a23f71372)
 
-# step7: edit routes
+# step7: edit routes in route tables:
 Select the Route Table:
 
-Choose the route table you want to edit from the list. This should be the one associated with your public subnets.
-Edit Routes:
+Choose the route table you want to edit from the list. Edit Routes for public subnet attach internet gateway and for private nat gateway:
 
-Click on the Routes tab.
-Click Edit routes.
-
-Add or Modify Routes
-Destination: Enter 0.0.0.0/0 for all IPv4 traffic (or ::/0 for all IPv6 traffic).
-Target: Select Internet Gateway and choose the appropriate Internet Gateway (e.g., igw-12345678).
-![image](https://github.com/user-attachments/assets/567e2feb-8600-49a5-ad4b-711c623af1f5)
-
-
+![Screenshot (206)](https://github.com/user-attachments/assets/7d67a844-2b9f-48de-b0c2-11b03d282bb5)
+![Screenshot (207)](https://github.com/user-attachments/assets/4768b727-2e25-47c5-bf36-39a7d5389444)
+![Screenshot (208)](https://github.com/user-attachments/assets/538da2f4-69a0-424a-ac87-7eff5e2b7edd)
 
 
 # Tier 1: Web tier (Frontend):
