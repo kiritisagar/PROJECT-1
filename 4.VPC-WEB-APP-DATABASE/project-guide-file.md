@@ -16,9 +16,9 @@
 ![image](https://miro.medium.com/v2/resize:fit:1400/format:webp/1*fIrk-zLWEb4mepZjY1kiRw.png)
 
 # step1:
- # elect the ‘VPC and more’ option and name our project ‘3tier-App’ with a CIDR block of 10.0.0.0/16
+ # select the ‘VPC’ and name our project ‘3tier-App’ with a CIDR block of 10.0.0.0/16
 
-![image](https://github.com/user-attachments/assets/554938be-d729-477e-bf1e-137f12995ee3)
+![image](https://github.com/user-attachments/assets/91443521-3f9d-4146-b51d-2c0676403c9f)
 
 # step2:
 # Create a 2 Public Subnet in your Custom VPC
