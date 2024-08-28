@@ -58,20 +58,36 @@ Select the newly created internet gateway.
 
 ![image](https://github.com/user-attachments/assets/9a53eb7b-9a78-4c70-aa60-506b35cc5be5)
 
-
 # Click Actions and then Attach to VPC.
 Choose your VPC and click Attach internet gateway.
 ![image](https://github.com/user-attachments/assets/e19b64fe-c804-4934-9792-47ad9b608ef9)
 ![image](https://github.com/user-attachments/assets/eeed7d1f-7ae9-4647-b589-04c6e91f064f)
 
 
+# step5:
+Create the NAT Gateway
+Name: MyNATGateway
+Create NAT Gateway in Public Subnet 1:
+Allocate Elastic IP for the NAT Gateway.
+Create the NAT Gateway in Public Subnet 1.
+
+![Screenshot (205)](https://github.com/user-attachments/assets/3448d4aa-3b4f-4c58-bc2b-e600b3439254)
+
+
 # step5: Create Route Tables
-# Public Route Table
+# A.Public Route Table
 
 Navigate to Route Tables under the VPC section.
 Click Create route table.
 Enter the route table details:
 Name tag: PublicRouteTable.
+VPC: Select the VPC you created.
+Click Create route table
+
+# B.Public Route Table
+Click Create route table.
+Enter the route table details:
+Name tag: PrivateRouteTable.
 VPC: Select the VPC you created.
 Click Create route table
 
