@@ -9,7 +9,7 @@
 ![image](https://miro.medium.com/v2/resize:fit:1400/format:webp/1*fIrk-zLWEb4mepZjY1kiRw.png)
 
 # step1:
- # elect the ‘VPC and more’ option and name our project ‘3tier-App’ with a CIDR block of 10.0.0.0/16
+ # elect the ‘VPC’ ‘3tier-App’ with a CIDR block of 10.0.0.0/16
 
 ![image](https://github.com/user-attachments/assets/554938be-d729-477e-bf1e-137f12995ee3)
 
@@ -29,25 +29,8 @@ IPv4 CIDR block: Enter 10.0.2.0/24.
 ![image](https://github.com/user-attachments/assets/c461c26d-ea92-4e46-9b00-5f9c8bd1f133)
 
 
-# step 3:
-# Private Subnets:
-Private Subnet 1:
-CIDR Block: 10.0.3.0/24
-Availability Zone: us-east-1a
-Private Subnet 2:
-CIDR Block: 10.0.4.0/24
-Availability Zone: us-east-1a
-Private Subnet 3:
-CIDR Block: 10.0.5.0/24
-Availability Zone: us-east-1b
-Private Subnet 4:
-CIDR Block: 10.0.6.0/24
-Availability Zone: us-east-1b
 
-![image](https://github.com/user-attachments/assets/c059f2d2-bae5-4c18-a825-cc91c7a3a467)
-
-
-# STEP4:
+# STEP3:
 # Create an Internet Gateway
 Navigate to Internet Gateways under the VPC section.
 Click Create internet gateway.
@@ -65,7 +48,7 @@ Choose your VPC and click Attach internet gateway.
 ![image](https://github.com/user-attachments/assets/eeed7d1f-7ae9-4647-b589-04c6e91f064f)
 
 
-# step5: Create Route Tables
+# step4: Create Route Tables
 # Public Route Table
 
 Navigate to Route Tables under the VPC section.
@@ -77,14 +60,14 @@ Click Create route table
 
 ![image](https://github.com/user-attachments/assets/bbcfc989-799c-40ea-91a7-b08aa2b95c34)
 
-# step6: Associate the  route tables with the subnets:
+# step5: Associate the  route tables with the subnets:
 Click Subnet Associations tab and then Edit subnet associations.
 Select the public subnets and click Save associations.
 
 ##  Make Auto-assign IP enable because as name suggests it is a Public subnet.
 ![image](https://github.com/user-attachments/assets/a431f026-89b3-4719-bf65-123a23f71372)
 
-# step7: edit routes
+# step6: edit routes
 Select the Route Table:
 
 Choose the route table you want to edit from the list. This should be the one associated with your public subnets.
