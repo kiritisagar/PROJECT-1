@@ -11,58 +11,111 @@
 
 ![image](https://github.com/user-attachments/assets/c7536f26-d253-4b64-aff4-aa1141993694)
 
+# Open the AWS account, search VPC in the search bar and click on VPC
 
-# select the ‘VPC and more’ option and name our project ‘3tier-App’ with a CIDR block of 10.0.0.0/16.
-![image](https://github.com/user-attachments/assets/610af8fe-1e06-43b2-ac17-b120da9cd4f4)
+![image](https://miro.medium.com/v2/resize:fit:1400/format:webp/1*fIrk-zLWEb4mepZjY1kiRw.png)
 
-# two AZs (us-east-1a and us-east-1b), two public subnets, and four private subnets
-![image](https://github.com/user-attachments/assets/5fcfa9e5-6e2f-4de0-8c1f-1e55057550f1)
+# step1:
+ # elect the ‘VPC and more’ option and name our project ‘3tier-App’ with a CIDR block of 10.0.0.0/16
 
-## visualize the assets about to be created.
-![image](https://github.com/user-attachments/assets/08084e90-5693-44a4-ac0c-2c21e3d2e102)
+![image](https://github.com/user-attachments/assets/554938be-d729-477e-bf1e-137f12995ee3)
 
+# step2:
+# Create a 2 Public Subnet in your Custom VPC
+Enter the subnet details: Name tag: PublicSubnet1. 
+VPC: Select the VPC you created. 
+Availability Zone: us-east-1a. 
+IPv4 CIDR block: Enter 10.0.1.0/24. Click Create subnet.
 
-# we need to make sure we ‘Enable auto-assign public IPv4 address’ for BOTH public subnets so we can access its resources via the Internet.
-![image](https://github.com/user-attachments/assets/c43c4cee-e45c-4f01-bfd7-4f41cde0dffc)
+![image](https://github.com/user-attachments/assets/405d93de-f939-4e70-aef5-d6839c69c574)
 
-# public-rtb to serve as the main table, so select the public-rtb from the ‘Route tables’ dashboard and set it as the main table under the ‘Actions’ dropdown menu.
-
-![image](https://github.com/user-attachments/assets/39ca48d6-64e9-42ea-8962-996321b82bfe)
-
-
-## Navigate to ‘NAT Gateways’ and create a new gateway called public-NAT-1. Select one of the public subnets, allocate an elastic IP, and create the gateway.
-![image](https://github.com/user-attachments/assets/0546b00c-c570-4712-8fcb-ff5c91b93a76)
-
-# Select private route tables and adjust the name
-![image](https://github.com/user-attachments/assets/baa8e970-f9fd-476a-b8c3-717186a42654)
-
-
-# Now let’s add a new route to our NAT gateway.
-![image](https://github.com/user-attachments/assets/5799a3ec-1507-4507-a41e-cca266c3af88)
-
-## there should be a total of two route tables, one with two associated, and one with four associated subnets.
-![image](https://github.com/user-attachments/assets/577ee264-76f8-4075-94f5-3c99565ae8cd)
+# B..Repeat the above steps to create a public subnet:
+Name tag: PublicSubnet2
+Availability Zone: Choose a different availability zone (e.g., us-east-1b).
+IPv4 CIDR block: Enter 10.0.2.0/24.
+![image](https://github.com/user-attachments/assets/c461c26d-ea92-4e46-9b00-5f9c8bd1f133)
 
 
-## Web tier (Frontend)
- 1. Create a web server launch template
+# step 3:
+# Private Subnets:
+Private Subnet 1:
+CIDR Block: 10.0.3.0/24
+Availability Zone: us-east-1a
+Private Subnet 2:
+CIDR Block: 10.0.4.0/24
+Availability Zone: us-east-1a
+Private Subnet 3:
+CIDR Block: 10.0.5.0/24
+Availability Zone: us-east-1b
+Private Subnet 4:
+CIDR Block: 10.0.6.0/24
+Availability Zone: us-east-1b
 
-In the EC2 console, navigate to ‘Launch templates’ under the ‘Instances’ sidebar menu. We’re going to create a new template called ‘brainiac-webServer’ with the following provisions:
+![image](https://github.com/user-attachments/assets/c059f2d2-bae5-4c18-a825-cc91c7a3a467)
 
-AMI: Amazon 2 Linux
-Instance type: t2.micro (1GB – Free Tier)
-A new or existing key pair
-We’re not going to specify subnets, but we will create a new security group with inbound SSH, HTTP, and HTTPS rules. Make sure the proper brainiac VPC is selected.
 
-![image](https://github.com/user-attachments/assets/f2296ba7-1cc9-4e70-ab51-0c3d8218ccce)
-![image](https://github.com/user-attachments/assets/30ec6cf0-d0cb-41b2-a09d-dbd6c277658d)
+# STEP4:
+# Create an Internet Gateway
+Navigate to Internet Gateways under the VPC section.
+Click Create internet gateway.
+Enter a name tag: (e.g., MyInternetGateway).
+Click Create internet gateway.
+Attach the Internet Gateway to your VPC:
+Select the newly created internet gateway.
 
-# 2. Create an Auto scaling group (ASG)
-ASG console from the sidebar menu and create a new group. The ASG will use the brainiac-webServer-template launch template we set up in the previous step.
+![image](https://github.com/user-attachments/assets/9a53eb7b-9a78-4c70-aa60-506b35cc5be5)
 
-Select the brainiac-vpc along with the two public subnets.
 
-![image](https://github.com/user-attachments/assets/5030aef4-5b4a-4ac3-a17f-b093f035d00a)
+# Click Actions and then Attach to VPC.
+Choose your VPC and click Attach internet gateway.
+![image](https://github.com/user-attachments/assets/e19b64fe-c804-4934-9792-47ad9b608ef9)
+![image](https://github.com/user-attachments/assets/eeed7d1f-7ae9-4647-b589-04c6e91f064f)
+
+
+# step5: Create Route Tables
+# Public Route Table
+
+Navigate to Route Tables under the VPC section.
+Click Create route table.
+Enter the route table details:
+Name tag: PublicRouteTable.
+VPC: Select the VPC you created.
+Click Create route table
+
+![image](https://github.com/user-attachments/assets/bbcfc989-799c-40ea-91a7-b08aa2b95c34)
+
+# step6: Associate the  route tables with the subnets:
+Click Subnet Associations tab and then Edit subnet associations.
+Select the public subnets and click Save associations.
+
+##  Make Auto-assign IP enable because as name suggests it is a Public subnet.
+![image](https://github.com/user-attachments/assets/a431f026-89b3-4719-bf65-123a23f71372)
+
+# step7: edit routes
+Select the Route Table:
+
+Choose the route table you want to edit from the list. This should be the one associated with your public subnets.
+Edit Routes:
+
+Click on the Routes tab.
+Click Edit routes.
+
+Add or Modify Routes
+Destination: Enter 0.0.0.0/0 for all IPv4 traffic (or ::/0 for all IPv6 traffic).
+Target: Select Internet Gateway and choose the appropriate Internet Gateway (e.g., igw-12345678).
+![image](https://github.com/user-attachments/assets/567e2feb-8600-49a5-ad4b-711c623af1f5)
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
