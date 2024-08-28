@@ -13,7 +13,7 @@
 
 
 # select the ‘VPC and more’ option and name our project ‘3tier-App’ with a CIDR block of 10.0.0.0/16.
-![image](https://github.com/user-attachments/assets/89e71475-4072-4896-a128-37a3c5875165)
+![image](https://github.com/user-attachments/assets/610af8fe-1e06-43b2-ac17-b120da9cd4f4)
 
 # two AZs (us-east-1a and us-east-1b), two public subnets, and four private subnets
 ![image](https://github.com/user-attachments/assets/5fcfa9e5-6e2f-4de0-8c1f-1e55057550f1)
