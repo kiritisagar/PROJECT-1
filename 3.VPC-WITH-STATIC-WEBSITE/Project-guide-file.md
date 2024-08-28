@@ -9,20 +9,18 @@
 ![image](https://miro.medium.com/v2/resize:fit:1400/format:webp/1*fIrk-zLWEb4mepZjY1kiRw.png)
 
 # step1:
- # Click on create VPC, select VPC only and enter IPv4.
+ # elect the ‘VPC and more’ option and name our project ‘3tier-App’ with a CIDR block of 10.0.0.0/16
 
 ![image](https://github.com/user-attachments/assets/554938be-d729-477e-bf1e-137f12995ee3)
 
 # step2:
-# Create a Public Subnet in your Custom VPC
-Enter the subnet details:
-Name tag: PublicSubnet1.
-VPC: Select the VPC you created.
-Availability Zone: Choose an availability zone (e.g., us-east-1a).
-IPv4 CIDR block: Enter 10.0.1.0/24.
-Click Create subnet.
+# Create a 2 Public Subnet in your Custom VPC
+Enter the subnet details: Name tag: PublicSubnet1. 
+VPC: Select the VPC you created. 
+Availability Zone: us-east-1a. 
+IPv4 CIDR block: Enter 10.0.1.0/24. Click Create subnet.
 
-![image](https://github.com/user-attachments/assets/c461c26d-ea92-4e46-9b00-5f9c8bd1f133)
+![image](https://github.com/user-attachments/assets/405d93de-f939-4e70-aef5-d6839c69c574)
 
 # B..Repeat the above steps to create a public subnet:
 Name tag: PublicSubnet2
@@ -30,7 +28,26 @@ Availability Zone: Choose a different availability zone (e.g., us-east-1b).
 IPv4 CIDR block: Enter 10.0.2.0/24.
 ![image](https://github.com/user-attachments/assets/c461c26d-ea92-4e46-9b00-5f9c8bd1f133)
 
-# STEP3:
+
+# step 3:
+# Private Subnets:
+Private Subnet 1:
+CIDR Block: 10.0.3.0/24
+Availability Zone: us-east-1a
+Private Subnet 2:
+CIDR Block: 10.0.4.0/24
+Availability Zone: us-east-1a
+Private Subnet 3:
+CIDR Block: 10.0.5.0/24
+Availability Zone: us-east-1b
+Private Subnet 4:
+CIDR Block: 10.0.6.0/24
+Availability Zone: us-east-1b
+
+![image](https://github.com/user-attachments/assets/c059f2d2-bae5-4c18-a825-cc91c7a3a467)
+
+
+# STEP4:
 # Create an Internet Gateway
 Navigate to Internet Gateways under the VPC section.
 Click Create internet gateway.
@@ -81,9 +98,4 @@ Destination: Enter 0.0.0.0/0 for all IPv4 traffic (or ::/0 for all IPv6 traffic)
 Target: Select Internet Gateway and choose the appropriate Internet Gateway (e.g., igw-12345678).
 ![image](https://github.com/user-attachments/assets/567e2feb-8600-49a5-ad4b-711c623af1f5)
 
-
-# step 8:
-go to ec2 dashboard and select vpc and sub net custum and create static website
-
-![image](https://github.com/user-attachments/assets/49baa9dc-4afa-4dc3-87a6-4fb84f418811)
 
