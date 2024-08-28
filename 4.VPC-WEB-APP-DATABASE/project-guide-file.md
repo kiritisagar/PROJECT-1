@@ -85,7 +85,9 @@ Select the public subnets and click Save associations.
 
 ![Screenshot (202)](https://github.com/user-attachments/assets/04c9d1d5-edae-474c-911d-443434842f17)
 
-![image](https://github.com/user-attachments/assets/6f81ea18-c8dc-4c15-9674-d1e38b08fa27)
+# after Associate the  route tables with the subnets check the dashbord of route tables
+
+![Screenshot (202)](https://github.com/user-attachments/assets/58dc3a42-8dc5-4ad9-8e25-938f528e2ae0)
 
 
 ##  Make Auto-assign IP enable because as name suggests it is a Public subnet.
