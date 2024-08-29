@@ -129,11 +129,37 @@ Choose the route table you want to edit from the list. Edit Routes for public su
 
 # Tier 2: Application tier (Backend)
 
-A Bastion host to securely connect to our application servers.
-![image](https://github.com/user-attachments/assets/898a921a-03ba-425a-bcc0-55f3be09455b)
+Amazon 2 Linux, t2.micro-1GB, same key pair).
+We want to allow ICMP–IPv4 from the brainiac-webServer-sg, which allows us to ping the application server from our web server.
+
+![image](https://github.com/user-attachments/assets/1b535da0-f51b-4280-ad20-2dd662ae1992)
 
 
-# 4. Create a Bastion host
+In the ‘User data’ field under ‘Advanced details,’ paste in this script:
+
+#!/bin/bash
+sudo apt install mysql -y
+
+# Confirm connectivity from the Web Tier
+Our application servers are up and running. Let’s verify connectivity by pinging the application server from one of the web servers.
+ping PRIVATE_IPV4_ADDRESS
+
+If successful, you should get a repeating response like this:
+
+![image](https://github.com/user-attachments/assets/5e7d593b-62f8-4173-827f-9bd00b9b3651)
+
+
+# Create a Bastion host
+Create a new security group called, ‘brainiac-bastionHost-sg,’ and only allow SSH through My IP.
+![image](https://github.com/user-attachments/assets/ec347e15-987b-489c-b57f-e6fa5c27be6d)
+
+
+Now we have to edit our inbound rules for the brainiac-appServer-sg to make sure we’re allowing SSH access ONLY from the bastion host server.
+![image](https://github.com/user-attachments/assets/7d580de6-b660-4630-84e9-be99cf660db7)
+
+## Test the connection
+Let’s see if we can connect to our application server through our bastion host.
+
 
 # Tier 3: Database tier (Data storage & retrieval):
 
