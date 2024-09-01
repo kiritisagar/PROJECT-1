@@ -118,6 +118,13 @@ Choose the route table you want to edit from the list. Edit Routes for public su
 ![Screenshot (207)](https://github.com/user-attachments/assets/4768b727-2e25-47c5-bf36-39a7d5389444)
 ![Screenshot (208)](https://github.com/user-attachments/assets/538da2f4-69a0-424a-ac87-7eff5e2b7edd)
 
+# setup a Bastion host
+Create a new security group called, ‘brainiac-bastionHost-sg,’ and only allow SSH through My IP.
+![image](https://github.com/user-attachments/assets/ec347e15-987b-489c-b57f-e6fa5c27be6d)
+
+
+Now we have to edit our inbound rules for the brainiac-appServer-sg to make sure we’re allowing SSH access ONLY from the bastion host server.
+![image](https://github.com/user-attachments/assets/7d580de6-b660-4630-84e9-be99cf660db7)
 
 # Tier 1: Web tier (Frontend):
 1.A web server launch template to define what kind of EC2 instances will be provisioned for the application.
@@ -149,13 +156,6 @@ If successful, you should get a repeating response like this:
 ![image](https://github.com/user-attachments/assets/5e7d593b-62f8-4173-827f-9bd00b9b3651)
 
 
-# Create a Bastion host
-Create a new security group called, ‘brainiac-bastionHost-sg,’ and only allow SSH through My IP.
-![image](https://github.com/user-attachments/assets/ec347e15-987b-489c-b57f-e6fa5c27be6d)
-
-
-Now we have to edit our inbound rules for the brainiac-appServer-sg to make sure we’re allowing SSH access ONLY from the bastion host server.
-![image](https://github.com/user-attachments/assets/7d580de6-b660-4630-84e9-be99cf660db7)
 
 ## Test the connection
 Let’s see if we can connect to our application server through our bastion host.
