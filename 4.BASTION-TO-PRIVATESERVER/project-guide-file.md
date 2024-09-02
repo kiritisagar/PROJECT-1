@@ -1,4 +1,6 @@
-A. Connecting to a private EC2 instance with a terminal via Bastion Host
+![image](https://github.com/user-attachments/assets/cf94cd22-8ff9-4866-8e09-2a8aa32332b6)
+
+# A. Connecting to a private EC2 instance with a terminal via Bastion Host
 
 Creating an EC2 instance in a public subnet as a Bastion Host:
 Select “Amazon Linux 2 AMI”,
@@ -7,8 +9,8 @@ Select your custom VPC and public subnet,
 Add tag “Name = Bastion_Host”
 In the security group section, select My IP as the source for the SSH connection.
 Select your key pair and launch your instance.
-2. Creating an EC2 instance in a private subnet:
 
+# 2. Creating an EC2 instance in a private subnet:
 Select “Amazon Linux 2 AMI”,
 Instance type “t2.micro”,
 Select your custom VPC and private subnet,
