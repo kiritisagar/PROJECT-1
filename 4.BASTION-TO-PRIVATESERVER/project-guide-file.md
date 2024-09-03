@@ -1,113 +1,82 @@
 ![image](https://github.com/user-attachments/assets/cf94cd22-8ff9-4866-8e09-2a8aa32332b6)
 
-# A. Connecting to a private EC2 instance with a terminal via Bastion Host
-
-Creating an EC2 instance in a public subnet as a Bastion Host:
-Select “Amazon Linux 2 AMI”,
-Instance type “t2.micro”,
-Select your custom VPC and public subnet,
-Add tag “Name = Bastion_Host”
-In the security group section, select My IP as the source for the SSH connection.
-Select your key pair and launch your instance.
-
-# 2. Creating an EC2 instance in a private subnet:
-Select “Amazon Linux 2 AMI”,
-Instance type “t2.micro”,
-Select your custom VPC and private subnet,
-Add tag “Name = Private_Instance”
-In the security group section, select custom and paste the security group of the public instance (Bastion Host).
-Select your key pair and launch your instance.
-Edit your “config” file under ~/.ssh/ folder and paste the content below:
-
-vi ~/.ssh/config
-Host bastion-host
-HostName <Public IP address of Bastion Host>
-User ec2-user
-Port 22
-IdentityFile ~/.ssh/<key pair>
-IdentitiesOnly yes
-Host private-ec2
-HostName <Private IP address of private EC2 instance>
-User ec2-user
-Port 22
-IdentityFile ~/.ssh/<key pair>
-IdentitiesOnly yes
-ProxyJump bastion-host
-We can connect to the private EC2 instance with the following command due to the ProxyJump in the config file:
-
-ssh private-ec2
-B. Connecting to a private RDS DB instance with the terminal from Bastion Host:
-
-Creating an EC2 instance in a public subnet as a Bastion Host:
-Select “Amazon Linux 2 AMI”,
-Instance type “t2.micro”,
-Select your custom VPC and public subnet,
-Add tag “Name=Public_Instance”
-In the security group section, select My IP as the source for the SSH connection.
-Select your key pair and launch your instance.
-2. Creating a MySQL RDS DB instance in a private subnet:
-
-Master username = “admin”
-Master password = “12345678”
-DB instance class “db.t2.micro”,
-Select your custom VPC,
-Public Access = No
-Select default VPC security group
-Select your RDS DB instance, click the “VPC security groups”, change the inbound rule’s source option to “Custom”, enter the private IP address of the Bastion Host and click “Save rules”.
-
-Open your terminal and run the command below for SSH tunneling:
-
-ssh -i “<key pair>” -N -L 3306:<DB endpoint>:3306 -p 22 ec2-user@<Public IP address or DNS of Bastion Host>
-
-ssh -i "adesso.cer" -N -L 3306:database-1.ccswxi20cprx.us-east-1.RDS.amazonaws.com:3306 -p 22 ec2-user@44.201.66.76
-After running this command, open a new terminal and try to connect to the MySQL RDS DB instance with the below command:
-
-mysql -u admin -h 127.0.0.1 -p
-Enter the password of the MySQL RDS DB instance and connect to the database.
-
-Another option to connect the MySQL RDS DB instance from a terminal is using the config file. Open ~/.ssh/config file and paste the content below:
-
-vi ~/.ssh/config
-Host tunnel-to-RDS
-User ec2-user
-Port 22
-Hostname <Public IP address of Bastion Host>
-LocalForward 3306 <DB endpoint>:3306
-IdentityFile ~/.ssh/<key pair>
-Host tunnel-to-RDS
-User ec2-user
-Port 22
-Hostname 44.201.66.76
-LocalForward 3306 database-1.ccswxi20cprx.us-east-1.RDS.amazonaws.com:3306
-IdentityFile ~/.ssh/adesso.cer
-Open your terminal and run the command below for ssh tunneling:
-
-ssh tunnel-to-RDS
-This command will open an SSH tunnel and you can connect the database with the below command:
-
-mysql -u admin -h 127.0.0.1 -p
-Enter the password of the MySQL RDS DB instance and connect the database.
-
-C. Connecting to a private RDS DB instance with MySQL Workbench from Bastion Host:
-
-Open your MySQL Workbench and click MySQL New Connection “+” icon.
+# VPC and components setup
+# one VPC.
+one (1) public subnets (baston server).
+one (1) private subnets (private instance).
+One (1) public route table that connects the public subnets to an internet gateway.
+One (1) private route table that will connect the Application Tier private subnets and a NAT gateway.
+one (1) internet gateway
 
 
-Enter a name for your connection and select “Standard TCP/IP over SSH” as the Connection Method. Then fill in the fields according to the information below:
+## setup vpc
 
-SSH Hostname = <Public IP address of Bastion Host>,
-SSH Username = ec2-user,
-SSH Key File = Select your key file from your local computer,
-MySQL Hostname = <DB Endpoint>,
-MySQL Server Port = 3306,
-Username = admin,
-Password = 12345678
-Click the “Test Connection” button. You need to see “Successfully made the MySQL connection” on the pop-up window. Choose “OK” for saving connection. Then you can connect your database using an SSH tunnel.
+Open the AWS account, search VPC in the search bar and click on VPC
+![image](https://github.com/user-attachments/assets/9a7ec14c-78af-455e-8c41-1f673ab33cb7)
+
+# step1:
+# select the ‘VPC’ and name our project ‘3tier-App’ with a CIDR block of 10.0.0.0/16
+![image](https://github.com/user-attachments/assets/0d788af1-a92d-4704-9200-dc5c8985796a)
+
+# Create an Internet Gateway
+Navigate to Internet Gateways under the VPC section. Click Create internet gateway. Enter a name tag: (e.g., MyInternetGateway). Click Create internet gateway. Attach the Internet Gateway to your VPC: Select the newly created internet gateway.
+
+![image](https://github.com/user-attachments/assets/ae35b502-4c82-4dd8-92e7-4b2b47d18e19)
+
+# Click Actions and then Attach to VPC.
+Choose your VPC and click Attach internet gateway. image image
+
+![image](https://github.com/user-attachments/assets/53b00079-9625-4ca0-99cd-4a7644dd1fef)
+
+![image](https://github.com/user-attachments/assets/87314fe2-69af-44b8-b0ef-7c2fea6c08c5)
 
 
-Congrats. You have access to your private resources in the AWS account from your local computer.
+# step2:
+# Create a 2 Public Subnet in your Custom VPC
+Enter the subnet details: Name tag: PublicSubnet1. VPC: Select the VPC you created. Availability Zone: us-east-1a. IPv4 CIDR block: Enter 10.0.1.0/24. Click Create subnet.
+![image](https://github.com/user-attachments/assets/7de2b877-733c-43c8-a14a-e623a6520e76)
 
-Conclusion
-Some resources must have limited access to the Internet, especially in terms of security. Therefore, these resources are created in private subnets and do not have Public IPs. If there are no services such as VPN or Direct Connect that allow us to access resources over Private IP, we can generally access these resources through Bastion Hosts. In our article, we have shown several ways how we can access an EC2 instance and RDS created in a private subnet from our local computer through Bastion Host.
+# Private Subnets:
+Private Subnet 1: CIDR Block: 10.0.2.0/24 Availability Zone: us-east-1a Private Subnet 2: CIDR Block: 10.0.4.0/24 Availability Zone: us-east-1a
+![image](https://github.com/user-attachments/assets/a2c76b0b-1c83-4c2f-af60-bff3ebb439c8)
+
+# step3
+Create Route Tables
+
+# A.Public Route Table
+Navigate to Route Tables under the VPC section. Click Create route table. Enter the route table details: Name tag: PublicRouteTable. VPC: Select the VPC you created. Click Create route table
+
+# Private Route Table
+Click Create route table. Enter the route table details: Name tag: PrivateRouteTable. VPC: Select the VPC you created. Click Create route table
+![image](https://github.com/user-attachments/assets/9a8aab5f-fb8a-46ec-8b44-9d9fd2f5d8fe)
+
+# step4:
+Associate the route tables with the subnets:
+Click Subnet Associations tab and then Edit subnet associations. Select the public subnets and click Save associations.
+
+![image](https://github.com/user-attachments/assets/a606b301-d0c2-4267-becc-dab6725288e7)
+![image](https://github.com/user-attachments/assets/9d4b3206-15b4-4301-8172-f7bee0ce4d96)
+
+# step5: edit routes in route tables:
+elect the Route Table:
+
+Choose the route table you want to edit from the list. Edit Routes for public subnet attach internet gateway and for private nat gateway:
+
+![image](https://github.com/user-attachments/assets/939f91db-a059-4c76-a99b-dabfff2a84d2)
+
+![image](https://github.com/user-attachments/assets/49687892-4400-41d5-a4ed-4daf5ef3bdbb)
+![image](https://github.com/user-attachments/assets/992632c3-e2b3-4bfd-9765-8d7ab4c7cf8f)
 
 
+## launch one bastion server with ip enable 
+# launch one server in private without ip
+
+# Start the SSH Agent: eval "$(ssh-agent -s)"
+Add the SSH Key to the Agent
+ssh-add ./jj.pem
+
+ connect to the bastion server by agant forwording
+ ssh -A -i "jj.pem" ubuntu@172.16.30.7
+
+ then you connect private server 
+ ssh user@privateip
