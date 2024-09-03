@@ -1,4 +1,9 @@
-Setting up VPC Peering in AWS:
+
+![image](https://github.com/user-attachments/assets/4f4c9fd9-7ba6-471d-9feb-1469a232421e)
+
+
+
+# Setting up VPC Peering in AWS:
 Task 1: Create two Custom VPCs in your AWS account within the same region
 
 1. Create the first Custom VPC
