@@ -51,6 +51,10 @@ Availability Zone: Choose a different availability zone (e.g., us-east-1b).
 IPv4 CIDR block: Enter 10.0.2.0/24.
 ![image](https://github.com/user-attachments/assets/c461c26d-ea92-4e46-9b00-5f9c8bd1f133)
 
+
+##  Make Auto-assign IP enable because as name suggests it is a Public subnet.
+![image](https://github.com/user-attachments/assets/a431f026-89b3-4719-bf65-123a23f71372)
+
 # Private Subnets:
 Private Subnet 1:
 CIDR Block: 10.0.3.0/24
@@ -81,7 +85,7 @@ Click Create route table
 
 ![image](https://github.com/user-attachments/assets/bbcfc989-799c-40ea-91a7-b08aa2b95c34)
 
-# step6: Associate the  route tables with the subnets:
+# step5: Associate the  route tables with the subnets:
 Click Subnet Associations tab and then Edit subnet associations.
 Select the public subnets and click Save associations.
 
@@ -94,7 +98,7 @@ Select the public subnets and click Save associations.
 ![Screenshot (204)](https://github.com/user-attachments/assets/7b441cf5-6d82-4bbb-9d2a-cfedefe8efd7)
 
 
-# step5:
+# step6:
 Create the NAT Gateway
 Name: MyNATGateway
 Create NAT Gateway in Public Subnet 1:
@@ -103,11 +107,6 @@ Create the NAT Gateway in Public Subnet 1.
 
 ![Screenshot (205)](https://github.com/user-attachments/assets/3448d4aa-3b4f-4c58-bc2b-e600b3439254)
 
-
-
-
-##  Make Auto-assign IP enable because as name suggests it is a Public subnet.
-![image](https://github.com/user-attachments/assets/a431f026-89b3-4719-bf65-123a23f71372)
 
 # step7: edit routes in route tables:
 Select the Route Table:
