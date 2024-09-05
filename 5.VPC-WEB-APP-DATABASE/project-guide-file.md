@@ -19,6 +19,7 @@
 
 ![image](https://github.com/user-attachments/assets/91443521-3f9d-4146-b51d-2c0676403c9f)
 
+# step2:
 # Create an Internet Gateway
 Navigate to Internet Gateways under the VPC section.
 Click Create internet gateway.
@@ -35,7 +36,7 @@ Choose your VPC and click Attach internet gateway.
 ![image](https://github.com/user-attachments/assets/eeed7d1f-7ae9-4647-b589-04c6e91f064f)
 
 
-# step2:
+# step3:
 # Create a 2 Public Subnet in your Custom VPC
 Enter the subnet details: Name tag: PublicSubnet1. 
 VPC: Select the VPC you created. 
@@ -50,8 +51,6 @@ Availability Zone: Choose a different availability zone (e.g., us-east-1b).
 IPv4 CIDR block: Enter 10.0.2.0/24.
 ![image](https://github.com/user-attachments/assets/c461c26d-ea92-4e46-9b00-5f9c8bd1f133)
 
-
-# step 3:
 # Private Subnets:
 Private Subnet 1:
 CIDR Block: 10.0.3.0/24
@@ -63,19 +62,7 @@ Availability Zone: us-east-1a
 ![image](https://github.com/user-attachments/assets/c059f2d2-bae5-4c18-a825-cc91c7a3a467)
 
 
-# STEP4:
-
-# step5:
-Create the NAT Gateway
-Name: MyNATGateway
-Create NAT Gateway in Public Subnet 1:
-Allocate Elastic IP for the NAT Gateway.
-Create the NAT Gateway in Public Subnet 1.
-
-![Screenshot (205)](https://github.com/user-attachments/assets/3448d4aa-3b4f-4c58-bc2b-e600b3439254)
-
-
-# step5: Create Route Tables
+# step4: Create Route Tables
 # A.Public Route Table
 
 Navigate to Route Tables under the VPC section.
@@ -105,6 +92,18 @@ Select the public subnets and click Save associations.
 # after Associate the  route tables with the subnets check the dashbord of route tables
 
 ![Screenshot (204)](https://github.com/user-attachments/assets/7b441cf5-6d82-4bbb-9d2a-cfedefe8efd7)
+
+
+# step5:
+Create the NAT Gateway
+Name: MyNATGateway
+Create NAT Gateway in Public Subnet 1:
+Allocate Elastic IP for the NAT Gateway.
+Create the NAT Gateway in Public Subnet 1.
+
+![Screenshot (205)](https://github.com/user-attachments/assets/3448d4aa-3b4f-4c58-bc2b-e600b3439254)
+
+
 
 
 ##  Make Auto-assign IP enable because as name suggests it is a Public subnet.
