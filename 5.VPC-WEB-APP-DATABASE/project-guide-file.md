@@ -19,6 +19,22 @@
 
 ![image](https://github.com/user-attachments/assets/91443521-3f9d-4146-b51d-2c0676403c9f)
 
+# Create an Internet Gateway
+Navigate to Internet Gateways under the VPC section.
+Click Create internet gateway.
+Enter a name tag: (e.g., MyInternetGateway).
+Click Create internet gateway.
+Attach the Internet Gateway to your VPC:
+Select the newly created internet gateway.
+
+![image](https://github.com/user-attachments/assets/9a53eb7b-9a78-4c70-aa60-506b35cc5be5)
+
+# Click Actions and then Attach to VPC.
+Choose your VPC and click Attach internet gateway.
+![image](https://github.com/user-attachments/assets/e19b64fe-c804-4934-9792-47ad9b608ef9)
+![image](https://github.com/user-attachments/assets/eeed7d1f-7ae9-4647-b589-04c6e91f064f)
+
+
 # step2:
 # Create a 2 Public Subnet in your Custom VPC
 Enter the subnet details: Name tag: PublicSubnet1. 
@@ -48,21 +64,6 @@ Availability Zone: us-east-1a
 
 
 # STEP4:
-# Create an Internet Gateway
-Navigate to Internet Gateways under the VPC section.
-Click Create internet gateway.
-Enter a name tag: (e.g., MyInternetGateway).
-Click Create internet gateway.
-Attach the Internet Gateway to your VPC:
-Select the newly created internet gateway.
-
-![image](https://github.com/user-attachments/assets/9a53eb7b-9a78-4c70-aa60-506b35cc5be5)
-
-# Click Actions and then Attach to VPC.
-Choose your VPC and click Attach internet gateway.
-![image](https://github.com/user-attachments/assets/e19b64fe-c804-4934-9792-47ad9b608ef9)
-![image](https://github.com/user-attachments/assets/eeed7d1f-7ae9-4647-b589-04c6e91f064f)
-
 
 # step5:
 Create the NAT Gateway
